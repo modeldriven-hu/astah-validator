@@ -1,7 +1,7 @@
 package hu.modeldriven.astah.validator.tool;
 
 import com.change_vision.jude.api.inf.model.INamedElement;
-import hu.modeldriven.validator.core.ModelElement;
+import hu.modeldriven.astah.validator.core.ModelElement;
 
 public class AstahModelElement implements ModelElement {
 

@@ -2,8 +2,8 @@ package hu.modeldriven.astah.validator.tool;
 
 import com.change_vision.jude.api.inf.model.INamedElement;
 import com.change_vision.jude.api.inf.model.IPackage;
-import hu.modeldriven.validator.core.ModelElement;
-import hu.modeldriven.validator.core.ModelPackage;
+import hu.modeldriven.astah.validator.core.ModelElement;
+import hu.modeldriven.astah.validator.core.ModelPackage;
 
 import java.util.ArrayList;
 import java.util.List;

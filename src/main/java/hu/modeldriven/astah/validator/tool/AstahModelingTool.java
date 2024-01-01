@@ -10,10 +10,10 @@ import com.change_vision.jude.api.inf.project.ProjectAccessor;
 import com.change_vision.jude.api.inf.view.IDiagramViewManager;
 import com.change_vision.jude.api.inf.view.IProjectViewManager;
 import com.change_vision.jude.api.inf.view.IViewManager;
-import hu.modeldriven.validator.core.ModelElement;
-import hu.modeldriven.validator.core.ModelPackage;
-import hu.modeldriven.validator.core.ModelingToolException;
-import hu.modeldriven.validator.core.ModelingToolRepresentation;
+import hu.modeldriven.astah.validator.core.ModelElement;
+import hu.modeldriven.astah.validator.core.ModelPackage;
+import hu.modeldriven.astah.validator.core.ModelingToolException;
+import hu.modeldriven.astah.validator.core.ModelingToolRepresentation;
 
 import java.util.Optional;
 

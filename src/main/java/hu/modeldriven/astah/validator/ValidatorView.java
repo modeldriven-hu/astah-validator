@@ -9,8 +9,8 @@ import com.change_vision.jude.api.inf.ui.IPluginExtraTabView;
 import com.change_vision.jude.api.inf.ui.ISelectionListener;
 import hu.modeldriven.astah.validator.tool.AstahModelingTool;
 import hu.modeldriven.core.eventbus.EventBus;
-import hu.modeldriven.validator.core.ModelingToolRepresentation;
-import hu.modeldriven.validator.ui.ValidationResultPanel;
+import hu.modeldriven.astah.validator.core.ModelingToolRepresentation;
+import hu.modeldriven.astah.validator.ui.ValidationResultPanel;
 
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
