@@ -3,19 +3,19 @@ suites:
   - name: "My first validation suite"
     rules:
       - name: "Validation rule 1"
-        message: "Validation rule 1 failed"
+        message: "Model element name does not start with First"
         severity: error
         language: groovy
         script: |
           return arg1.name.startsWith("First")
       - name: "Validation rule 2"
-        message: "Validation rule 2 failed"
+        message: "This will always fail"
         severity: info
         language: groovy
         script: |
           return false
       - name: "Validation rule 3"
-        message: "Validation rule 3 failed"
+        message: "Validation will never fail"
         severity: info
         language: groovy
         script: |

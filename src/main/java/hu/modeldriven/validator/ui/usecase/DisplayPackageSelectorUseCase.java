@@ -7,7 +7,9 @@ import hu.modeldriven.astah.validator.tool.AstahModelPackage;
 import hu.modeldriven.core.eventbus.Event;
 import hu.modeldriven.core.eventbus.EventBus;
 import hu.modeldriven.core.eventbus.EventHandler;
+import hu.modeldriven.validator.core.ModelingToolException;
 import hu.modeldriven.validator.core.ModelingToolRepresentation;
+import hu.modeldriven.validator.ui.event.ExceptionOccurredEvent;
 import hu.modeldriven.validator.ui.event.PackageSelectedEvent;
 import hu.modeldriven.validator.ui.event.SelectPackageRequestedEvent;
 
@@ -38,11 +40,17 @@ public class DisplayPackageSelectorUseCase implements EventHandler<SelectPackage
         // this needs to be fixed before moving all the validator code into a separate
         // package for code reuse
 
-        PackageSelectorDialog dialog = new PackageSelectorDialog(
-                parentComponent,
-                (IPackage)toolRepresentation.rootPackage().value(),
-                this);
-        dialog.show();
+        try {
+
+            PackageSelectorDialog dialog = new PackageSelectorDialog(
+                    parentComponent,
+                    (IPackage) toolRepresentation.rootPackage().value(),
+                    this);
+            dialog.show();
+
+        } catch (ModelingToolException e){
+            eventBus.publish(new ExceptionOccurredEvent(e));
+        }
     }
 
     @Override

@@ -82,7 +82,7 @@ public class ValidatorView extends JPanel implements IPluginExtraTabView, Projec
 
     @Override
     public String getTitle() {
-        return "Validation results";
+        return "Model Validation";
     }
 
     public void activated() {

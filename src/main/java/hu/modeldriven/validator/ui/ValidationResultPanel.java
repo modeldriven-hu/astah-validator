@@ -1,10 +1,7 @@
 package hu.modeldriven.validator.ui;
 
 import hu.modeldriven.core.eventbus.EventBus;
-import hu.modeldriven.validator.core.ModelElement;
-import hu.modeldriven.validator.core.ModelingToolRepresentation;
-import hu.modeldriven.validator.core.ValidationRule;
-import hu.modeldriven.validator.core.ValidationSuite;
+import hu.modeldriven.validator.core.*;
 import hu.modeldriven.validator.ui.combobox.ValidationSuiteComboBoxRenderer;
 import hu.modeldriven.validator.ui.event.*;
 import hu.modeldriven.validator.ui.table.SeverityRenderer;
@@ -23,7 +20,7 @@ public class ValidationResultPanel extends AbstractValidationResultPanel {
     private final ModelingToolRepresentation modelingTool;
     private final EventBus eventBus;
 
-    public ValidationResultPanel(Component parentComponent,  ModelingToolRepresentation modelingTool, EventBus eventBus) {
+    public ValidationResultPanel(Component parentComponent, ModelingToolRepresentation modelingTool, EventBus eventBus) {
         super();
         this.parentComponent = parentComponent;
         this.modelingTool = modelingTool;
@@ -52,8 +49,12 @@ public class ValidationResultPanel extends AbstractValidationResultPanel {
 
         selectModelElementMenuItem.addActionListener(actionEvent -> {
             if (table.getSelectedRow() != -1) {
-                ModelElement modelElement = (ModelElement) table.getModel().getValueAt(table.getSelectedRow(), 0);
-                modelingTool.selectModelElement(modelElement);
+                try {
+                    ModelElement modelElement = (ModelElement) table.getModel().getValueAt(table.getSelectedRow(), 0);
+                    modelingTool.selectModelElement(modelElement);
+                } catch (ModelingToolException e) {
+                    eventBus.publish(new ExceptionOccurredEvent(e));
+                }
             }
         });
 
@@ -61,8 +62,12 @@ public class ValidationResultPanel extends AbstractValidationResultPanel {
 
         selectOnDiagramMenuItem.addActionListener(actionEvent -> {
             if (table.getSelectedRow() != -1) {
-                ModelElement modelElement = (ModelElement)table.getModel().getValueAt(table.getSelectedRow(), 0);
-                modelingTool.selectModelElementOnCurrentDiagram(modelElement);
+                try {
+                    ModelElement modelElement = (ModelElement) table.getModel().getValueAt(table.getSelectedRow(), 0);
+                    modelingTool.selectModelElementOnCurrentDiagram(modelElement);
+                } catch (ModelingToolException e) {
+                    eventBus.publish(new ExceptionOccurredEvent(e));
+                }
             }
         });
 

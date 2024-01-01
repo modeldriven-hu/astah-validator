@@ -27,8 +27,6 @@ public class ExecuteValidationUseCase implements EventHandler<Event> {
     @Override
     public void handleEvent(Event event) {
 
-        System.err.println("Handling execute validation use case");
-
         if (event instanceof PackageSelectedEvent) {
             this.selectionData.selectedPackage = ((PackageSelectedEvent)event).selectedPackage();
         }

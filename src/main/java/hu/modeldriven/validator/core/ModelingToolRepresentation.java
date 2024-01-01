@@ -4,12 +4,12 @@ import java.util.Optional;
 
 public interface ModelingToolRepresentation {
 
-    ModelPackage rootPackage();
+    ModelPackage rootPackage() throws ModelingToolException;
 
-    Optional<ModelPackage> selectedPackage();
+    Optional<ModelPackage> selectedPackage() throws ModelingToolException;
 
-    void selectModelElement(ModelElement modelElement);
+    void selectModelElement(ModelElement modelElement) throws ModelingToolException;
 
-    void selectModelElementOnCurrentDiagram(ModelElement modelElement);
+    void selectModelElementOnCurrentDiagram(ModelElement modelElement) throws ModelingToolException;
 
 }

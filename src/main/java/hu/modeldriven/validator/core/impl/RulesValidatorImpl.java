@@ -22,9 +22,6 @@ public class RulesValidatorImpl implements RulesValidator {
             if (element instanceof ModelPackage) {
                 traverseModel((ModelPackage) element, suite, failedRules);
             } else {
-
-                System.err.println("Validating model element: " + element.name());
-
                 validateModelElement(element, suite, failedRules);
             }
         }
@@ -32,8 +29,6 @@ public class RulesValidatorImpl implements RulesValidator {
 
     private void validateModelElement(ModelElement modelElement, ValidationSuite suite, Map<ValidationRule, List<ModelElement>> failedRules) {
         for (ValidationRule rule : suite.validatorRules()) {
-
-            System.err.println("Executing validation rule " + rule );
 
             try {
                 ValidationResult result = rule.validate(modelElement);
@@ -43,8 +38,6 @@ public class RulesValidatorImpl implements RulesValidator {
                         failedRules.put(rule, new ArrayList<>());
                     }
                     failedRules.get(rule).add(modelElement);
-                } else {
-                    System.err.println("Validation rule " + rule + "    failed" );
                 }
 
             } catch (ValidationFailedException ex) {
