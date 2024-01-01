@@ -15,28 +15,34 @@ public class GroovyScriptExecutionException extends ScriptExecutionException {
     }
 
     private static int calculateLineNumberFromException(Exception ex) {
-        int lineNumber = MISSING_LINE;
-
         if (ex instanceof MultipleCompilationErrorsException) {
-            Pattern pattern = Pattern.compile("@ line ([0-9]+)");
-            Matcher matcher = pattern.matcher(ex.getMessage());
-
-            if (matcher.find()) {
-                try {
-                    lineNumber = Integer.parseInt(matcher.group(1));
-                } catch (NumberFormatException e) {
-                    lineNumber = MISSING_LINE;
-                }
-            }
+            return extractLineNumberFromCompilationError(ex.getMessage());
         } else {
-            lineNumber = Arrays.stream(ex.getStackTrace())
-                    .filter(e -> TEMP_FILENAME.equals(e.getFileName())) // matching filename
-                    .map(StackTraceElement::getLineNumber) // get line number
-                    .findFirst()                           // find the first one
-                    .orElse(MISSING_LINE);                 // or else set -1 meaning we have no idea
+            return extractLineNumberFromStackTrace(ex.getStackTrace());
+        }
+    }
+
+    private static int extractLineNumberFromCompilationError(String errorMessage) {
+        Pattern pattern = Pattern.compile("@ line ([0-9]+)");
+        Matcher matcher = pattern.matcher(errorMessage);
+
+        if (matcher.find()) {
+            try {
+                return Integer.parseInt(matcher.group(1));
+            } catch (NumberFormatException e) {
+                return MISSING_LINE;
+            }
         }
 
-        return lineNumber;
+        return MISSING_LINE;
+    }
+
+    private static int extractLineNumberFromStackTrace(StackTraceElement[] stackTrace) {
+        return Arrays.stream(stackTrace)
+                .filter(e -> TEMP_FILENAME.equals(e.getFileName())) // matching filename
+                .map(StackTraceElement::getLineNumber) // get line number
+                .findFirst()                           // find the first one
+                .orElse(MISSING_LINE);                 // or else set -1 meaning we have no idea
     }
 
 }
