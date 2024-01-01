@@ -40,7 +40,7 @@ public class ValidatorView extends JPanel implements IPluginExtraTabView, Projec
 
     private Container createContentPane() {
 
-        Component component = null;
+        Component component;
 
         try {
             component = AstahAPI.getAstahAPI().getViewManager().getMainFrame();

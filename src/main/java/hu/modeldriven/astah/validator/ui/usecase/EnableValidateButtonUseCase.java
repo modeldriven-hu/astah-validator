@@ -44,7 +44,7 @@ public class EnableValidateButtonUseCase implements EventHandler<Event> {
         return Arrays.asList(ValidationSuitesAvailableEvent.class, PackageSelectedEvent.class);
     }
 
-    class SelectionData {
+    static class SelectionData {
 
         boolean suitesAvailable;
         boolean packageSelected;

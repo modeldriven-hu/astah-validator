@@ -60,7 +60,7 @@ public class ExecuteValidationUseCase implements EventHandler<Event> {
                 ValidationSuiteSelectedEvent.class);
     }
 
-    class SelectionData {
+    static class SelectionData {
         ModelPackage selectedPackage;
         ValidationSuite selectedSuite;
     }
