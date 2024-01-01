@@ -35,7 +35,9 @@ public class AbstractValidationResultPanel extends javax.swing.JPanel {
         selectPackageButton = new javax.swing.JButton();
         cardPanel = new javax.swing.JPanel();
         infoPanel = new javax.swing.JPanel();
+        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
         infoLabel = new javax.swing.JLabel();
+        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
         tablePanel = new javax.swing.JPanel();
         scrollPane = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
@@ -89,24 +91,13 @@ public class AbstractValidationResultPanel extends javax.swing.JPanel {
 
         cardPanel.setLayout(new java.awt.CardLayout());
 
-        infoLabel.setText("Execute validation in order to see result!");
+        infoPanel.setLayout(new javax.swing.BoxLayout(infoPanel, javax.swing.BoxLayout.X_AXIS));
+        infoPanel.add(filler1);
 
-        javax.swing.GroupLayout infoPanelLayout = new javax.swing.GroupLayout(infoPanel);
-        infoPanel.setLayout(infoPanelLayout);
-        infoPanelLayout.setHorizontalGroup(
-            infoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, infoPanelLayout.createSequentialGroup()
-                .addContainerGap(395, Short.MAX_VALUE)
-                .addComponent(infoLabel)
-                .addGap(296, 296, 296))
-        );
-        infoPanelLayout.setVerticalGroup(
-            infoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(infoPanelLayout.createSequentialGroup()
-                .addGap(170, 170, 170)
-                .addComponent(infoLabel)
-                .addContainerGap(162, Short.MAX_VALUE))
-        );
+        infoLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        infoLabel.setText("Execute validation in order to see result!");
+        infoPanel.add(infoLabel);
+        infoPanel.add(filler2);
 
         cardPanel.add(infoPanel, "infoPanel");
 
@@ -143,7 +134,7 @@ public class AbstractValidationResultPanel extends javax.swing.JPanel {
             .addGroup(validationResultInfoPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(validationResultLabel)
-                .addContainerGap(898, Short.MAX_VALUE))
+                .addContainerGap(777, Short.MAX_VALUE))
         );
         validationResultInfoPanelLayout.setVerticalGroup(
             validationResultInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -161,6 +152,8 @@ public class AbstractValidationResultPanel extends javax.swing.JPanel {
     private javax.swing.JPanel actionPanel;
     protected javax.swing.JPanel cardPanel;
     protected javax.swing.JButton clearValidationButton;
+    private javax.swing.Box.Filler filler1;
+    private javax.swing.Box.Filler filler2;
     private javax.swing.JLabel infoLabel;
     protected javax.swing.JPanel infoPanel;
     private javax.swing.JScrollPane scrollPane;

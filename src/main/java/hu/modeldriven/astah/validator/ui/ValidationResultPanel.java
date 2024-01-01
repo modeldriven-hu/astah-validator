@@ -9,6 +9,7 @@ import hu.modeldriven.astah.validator.ui.event.ValidationSuiteSelectedEvent;
 import hu.modeldriven.astah.validator.ui.table.SeverityRenderer;
 import hu.modeldriven.astah.validator.ui.usecase.ClearValidationUseCase;
 import hu.modeldriven.astah.validator.ui.usecase.DisplayPackageSelectorUseCase;
+import hu.modeldriven.astah.validator.ui.usecase.DisplayValidationResultCountUseCase;
 import hu.modeldriven.core.eventbus.EventBus;
 
 import javax.swing.JMenuItem;
@@ -89,10 +90,11 @@ public class ValidationResultPanel extends AbstractValidationResultPanel {
         eventBus.subscribe(new hu.modeldriven.astah.validator.ui.usecase.EnableClearValidationButtonUseCase(eventBus, clearValidationButton));
         eventBus.subscribe(new hu.modeldriven.astah.validator.ui.usecase.ExecuteValidationUseCase(eventBus));
         eventBus.subscribe(new hu.modeldriven.astah.validator.ui.usecase.DisplayValidationExecutionUseCase(eventBus, table, cardPanel));
-        eventBus.subscribe(new ClearValidationUseCase(eventBus, this.cardPanel));
+        eventBus.subscribe(new ClearValidationUseCase(eventBus, cardPanel));
         eventBus.subscribe(new DisplayPackageSelectorUseCase(parentComponent,
                 modelingTool,
                 eventBus));
+        eventBus.subscribe(new DisplayValidationResultCountUseCase(validationResultLabel));
     }
 
     private void onSelectRepositoryPressed(ActionEvent actionEvent) {
