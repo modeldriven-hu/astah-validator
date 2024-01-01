@@ -6,10 +6,7 @@ import hu.modeldriven.validator.core.ModelingToolRepresentation;
 import hu.modeldriven.validator.core.ValidationRule;
 import hu.modeldriven.validator.core.ValidationSuite;
 import hu.modeldriven.validator.ui.combobox.ValidationSuiteComboBoxRenderer;
-import hu.modeldriven.validator.ui.event.ClearValidationRequestedEvent;
-import hu.modeldriven.validator.ui.event.SelectPackageRequestedEvent;
-import hu.modeldriven.validator.ui.event.SelectRepositoryRequestedEvent;
-import hu.modeldriven.validator.ui.event.ValidationRequestedEvent;
+import hu.modeldriven.validator.ui.event.*;
 import hu.modeldriven.validator.ui.table.SeverityRenderer;
 import hu.modeldriven.validator.ui.usecase.*;
 
@@ -17,6 +14,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
+import java.awt.event.ItemEvent;
 
 public class ValidationResultPanel extends AbstractValidationResultPanel {
 
@@ -42,6 +40,7 @@ public class ValidationResultPanel extends AbstractValidationResultPanel {
         this.validateButton.addActionListener(this::onValidatePressed);
         this.clearValidationButton.addActionListener(this::onClearValidationPressed);
         this.suiteComboBox.setRenderer(new ValidationSuiteComboBoxRenderer());
+        this.suiteComboBox.addItemListener(this::onItemSelected);
         this.table.setDefaultRenderer(ValidationRule.Severity.class, new SeverityRenderer());
         createPopupMenu();
     }
@@ -95,11 +94,18 @@ public class ValidationResultPanel extends AbstractValidationResultPanel {
         eventBus.publish(new SelectPackageRequestedEvent());
     }
 
-    private void onValidatePressed(ActionEvent actionEvent) {
-        if (this.suiteComboBox.getSelectedItem() != null && modelingTool.selectedPackage().isPresent()) {
-            ValidationSuite selectedSuite = this.suiteComboBox.getItemAt(this.suiteComboBox.getSelectedIndex());
-            eventBus.publish(new ValidationRequestedEvent(modelingTool.selectedPackage().get(), selectedSuite));
+
+    private void onItemSelected(ItemEvent itemEvent) {
+
+        if (itemEvent.getStateChange() == ItemEvent.SELECTED) {
+            ValidationSuite selectedSuite = (ValidationSuite) itemEvent.getItem();
+            eventBus.publish(new ValidationSuiteSelectedEvent(selectedSuite));
         }
+
+    }
+
+    private void onValidatePressed(ActionEvent actionEvent) {
+        eventBus.publish(new ValidationRequestedEvent());
     }
 
     private void onClearValidationPressed(ActionEvent actionEvent) {

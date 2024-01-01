@@ -1,43 +1,69 @@
 package hu.modeldriven.validator.ui.usecase;
 
+import com.change_vision.jude.api.inf.model.IPackage;
 import hu.modeldriven.core.eventbus.Event;
 import hu.modeldriven.core.eventbus.EventBus;
 import hu.modeldriven.core.eventbus.EventHandler;
+import hu.modeldriven.validator.core.ModelPackage;
 import hu.modeldriven.validator.core.RulesValidator;
 import hu.modeldriven.validator.core.ValidationExecution;
+import hu.modeldriven.validator.core.ValidationSuite;
 import hu.modeldriven.validator.core.impl.RulesValidatorImpl;
-import hu.modeldriven.validator.ui.event.ExceptionOccurredEvent;
-import hu.modeldriven.validator.ui.event.ValidationExecutedEvent;
-import hu.modeldriven.validator.ui.event.ValidationRequestedEvent;
+import hu.modeldriven.validator.ui.event.*;
 
 import java.util.Arrays;
 import java.util.List;
 
-public class ExecuteValidationUseCase implements EventHandler<ValidationRequestedEvent> {
+public class ExecuteValidationUseCase implements EventHandler<Event> {
 
     private final EventBus eventBus;
+    private final SelectionData selectionData;
 
     public ExecuteValidationUseCase(EventBus eventBus) {
         this.eventBus = eventBus;
+        this.selectionData = new SelectionData();
     }
 
     @Override
-    public void handleEvent(ValidationRequestedEvent e) {
-        RulesValidator rulesValidator = new RulesValidatorImpl();
+    public void handleEvent(Event event) {
 
-        try {
-            ValidationExecution result = rulesValidator.execute(
-                    e.selectedPackage(),
-                    e.selectedSuite());
+        System.err.println("Handling execute validation use case");
 
-            eventBus.publish(new ValidationExecutedEvent(result));
-        } catch (Exception ex) {
-            eventBus.publish(new ExceptionOccurredEvent(ex));
+        if (event instanceof PackageSelectedEvent) {
+            this.selectionData.selectedPackage = ((PackageSelectedEvent)event).selectedPackage();
+        }
+
+        if (event instanceof ValidationSuiteSelectedEvent) {
+            this.selectionData.selectedSuite = ((ValidationSuiteSelectedEvent)event).selectedSuite();
+        }
+
+        if (event instanceof ValidationRequestedEvent) {
+            RulesValidator rulesValidator = new RulesValidatorImpl();
+
+            try {
+                ValidationExecution result = rulesValidator.execute(
+                        selectionData.selectedPackage,
+                        selectionData.selectedSuite);
+
+                eventBus.publish(new ValidationExecutedEvent(result));
+            } catch (Exception ex) {
+                eventBus.publish(new ExceptionOccurredEvent(ex));
+            }
         }
     }
 
     @Override
     public List<Class<? extends Event>> subscribedEvents() {
-        return Arrays.asList(ValidationRequestedEvent.class);
+
+        return Arrays.asList(
+                ValidationRequestedEvent.class,
+                PackageSelectedEvent.class,
+                ValidationSuiteSelectedEvent.class);
     }
+
+    class SelectionData {
+        ModelPackage selectedPackage;
+        ValidationSuite selectedSuite;
+    }
+
 }

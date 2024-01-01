@@ -3,6 +3,7 @@ package hu.modeldriven.validator.ui.usecase;
 import com.change_vision.jude.api.inf.model.IPackage;
 import groovyjarjarpicocli.CommandLine;
 import hu.modeldriven.astah.core.dialog.pkg.PackageSelectorDialog;
+import hu.modeldriven.astah.validator.tool.AstahModelPackage;
 import hu.modeldriven.core.eventbus.Event;
 import hu.modeldriven.core.eventbus.EventBus;
 import hu.modeldriven.core.eventbus.EventHandler;
@@ -30,11 +31,18 @@ public class DisplayPackageSelectorUseCase implements EventHandler<SelectPackage
 
     @Override
     public void handleEvent(SelectPackageRequestedEvent event) {
-            PackageSelectorDialog dialog = new PackageSelectorDialog(
-                    parentComponent,
-                    (IPackage)toolRepresentation.rootPackage().value(),
-                    this);
-            dialog.show();
+
+        // The packageSelectorDialog is breaking encapsulation because it is returning
+        // a model tool specific element instead of a generic one
+
+        // this needs to be fixed before moving all the validator code into a separate
+        // package for code reuse
+
+        PackageSelectorDialog dialog = new PackageSelectorDialog(
+                parentComponent,
+                (IPackage)toolRepresentation.rootPackage().value(),
+                this);
+        dialog.show();
     }
 
     @Override
@@ -44,6 +52,6 @@ public class DisplayPackageSelectorUseCase implements EventHandler<SelectPackage
 
     @Override
     public void accept(IPackage iPackage) {
-        eventBus.publish(new PackageSelectedEvent(iPackage));
+        eventBus.publish(new PackageSelectedEvent(new AstahModelPackage(iPackage)));
     }
 }
