@@ -8,6 +8,7 @@ import hu.modeldriven.astah.validator.ui.event.ClearValidationRequestedEvent;
 import javax.swing.JPanel;
 import java.awt.CardLayout;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class ClearValidationUseCase implements EventHandler<ClearValidationRequestedEvent> {
@@ -30,7 +31,7 @@ public class ClearValidationUseCase implements EventHandler<ClearValidationReque
 
     @Override
     public List<Class<? extends Event>> subscribedEvents() {
-        return Arrays.asList(ClearValidationRequestedEvent.class);
+        return Collections.singletonList(ClearValidationRequestedEvent.class);
     }
 
 }

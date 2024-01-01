@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 import java.awt.CardLayout;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class DisplayValidationExecutionUseCase implements EventHandler<ValidationExecutedEvent> {
@@ -44,6 +45,6 @@ public class DisplayValidationExecutionUseCase implements EventHandler<Validatio
 
     @Override
     public List<Class<? extends Event>> subscribedEvents() {
-        return Arrays.asList(ValidationExecutedEvent.class);
+        return Collections.singletonList(ValidationExecutedEvent.class);
     }
 }

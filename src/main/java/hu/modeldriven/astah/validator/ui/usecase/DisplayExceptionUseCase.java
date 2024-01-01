@@ -15,6 +15,7 @@ import java.awt.Dimension;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class DisplayExceptionUseCase implements UseCase, EventHandler<ExceptionOccurredEvent> {
@@ -23,11 +24,6 @@ public class DisplayExceptionUseCase implements UseCase, EventHandler<ExceptionO
 
     public DisplayExceptionUseCase(EventBus eventBus) {
         this.eventBus = eventBus;
-    }
-
-    @Override
-    public List<Class<? extends Event>> subscribedEvents() {
-        return Arrays.asList(ExceptionOccurredEvent.class);
     }
 
     @Override
@@ -50,4 +46,11 @@ public class DisplayExceptionUseCase implements UseCase, EventHandler<ExceptionO
 
         JOptionPane.showMessageDialog(null, panel, "Exception occurred!", JOptionPane.ERROR_MESSAGE);
     }
+
+
+    @Override
+    public List<Class<? extends Event>> subscribedEvents() {
+        return Collections.singletonList(ExceptionOccurredEvent.class);
+    }
+
 }

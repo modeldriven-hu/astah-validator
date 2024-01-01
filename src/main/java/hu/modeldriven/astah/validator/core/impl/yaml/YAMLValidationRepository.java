@@ -5,7 +5,9 @@ import hu.modeldriven.astah.validator.core.impl.script.ScriptExecutorRepository;
 import hu.modeldriven.astah.validator.core.ValidationRepository;
 import hu.modeldriven.astah.validator.core.ValidationSuite;
 import hu.modeldriven.astah.validator.core.impl.CachedValidationSuite;
+import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.constructor.Constructor;
 
 import java.io.File;
 import java.io.FileReader;
@@ -30,7 +32,11 @@ public class YAMLValidationRepository implements ValidationRepository {
         ScriptExecutorRepository scriptRepository = new DefaultScriptExecutorRepository();
 
         try (Reader reader = new FileReader(this.file)) {
-            Yaml yamlParser = new Yaml();
+
+            LoaderOptions options = new LoaderOptions();
+            options.setTagInspector(tag -> false);
+            Yaml yamlParser = new Yaml(options);
+
             Map<String, Object> yamlData = yamlParser.load(reader);
 
             List<ValidationSuite> result = new ArrayList<>();

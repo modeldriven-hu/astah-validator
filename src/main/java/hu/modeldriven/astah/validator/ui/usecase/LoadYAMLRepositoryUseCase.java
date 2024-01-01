@@ -13,6 +13,7 @@ import hu.modeldriven.astah.validator.ui.event.YAMLRepositoryFileSelectedEvent;
 
 import java.io.File;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class LoadYAMLRepositoryUseCase implements UseCase, EventHandler<YAMLRepositoryFileSelectedEvent> {
@@ -21,11 +22,6 @@ public class LoadYAMLRepositoryUseCase implements UseCase, EventHandler<YAMLRepo
 
     public LoadYAMLRepositoryUseCase(EventBus eventBus) {
         this.eventBus = eventBus;
-    }
-
-    @Override
-    public List<Class<? extends Event>> subscribedEvents() {
-        return Arrays.asList(YAMLRepositoryFileSelectedEvent.class);
     }
 
     @Override
@@ -39,6 +35,12 @@ public class LoadYAMLRepositoryUseCase implements UseCase, EventHandler<YAMLRepo
         } catch (Exception ex) {
             eventBus.publish(new ExceptionOccurredEvent(ex));
         }
+    }
+
+
+    @Override
+    public List<Class<? extends Event>> subscribedEvents() {
+        return Collections.singletonList(YAMLRepositoryFileSelectedEvent.class);
     }
 
 }

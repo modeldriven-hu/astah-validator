@@ -11,6 +11,7 @@ import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.File;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class DisplayRepositorySelectorUseCase implements UseCase, EventHandler<SelectRepositoryRequestedEvent> {
@@ -23,7 +24,7 @@ public class DisplayRepositorySelectorUseCase implements UseCase, EventHandler<S
 
     @Override
     public List<Class<? extends Event>> subscribedEvents() {
-        return Arrays.asList(SelectRepositoryRequestedEvent.class);
+        return Collections.singletonList(SelectRepositoryRequestedEvent.class);
     }
 
     @Override
