@@ -1,4 +1,4 @@
-# Astah validator
+# Astah Validator Plug-In
 
 With this plugin you can run validation rules on your model. The validation rules
 can be described in groovy script (very similar to java) which are stored in a standard
