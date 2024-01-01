@@ -1,23 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin>
-   <extension point="com.change_vision.astah.ui.actionSets">
-      <actionSet
-            label="%action_set_label"
-            visible="true"
-            id="hu.modeldriven.astah-validator.actionSet">
-         <menu
-               id="astah-validator"
-               label="%menu_group"
-               path="tool/astah-validator">
-         </menu>
-         <action
-			   label="%menu_label"
-               icon="icons/sample.gif"
-               class="hu.modeldriven.astah.validator.TemplateAction"
-               tooltip="%menu_tooltip"
-               menubarPath="tool/astah-validator/"
-               id="astah-validator">
-         </action>
-     </actionSet>
+   <extension point="com.change_vision.astah.ui.view">
+      <view
+              id="hu.modeldriven.astah-validator.ValidatorView"
+              type="extraTab"
+              class="hu.modeldriven.astah.validator.ValidatorView" />
    </extension>
 </plugin>
