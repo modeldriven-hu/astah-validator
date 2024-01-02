@@ -44,6 +44,7 @@ public class ValidationResultPanel extends AbstractValidationResultPanel {
         this.clearValidationButton.addActionListener(this::onClearValidationPressed);
         this.suiteComboBox.setRenderer(new ValidationSuiteComboBoxRenderer());
         this.suiteComboBox.addItemListener(this::onItemSelected);
+        this.table.setAutoCreateRowSorter(true);
         this.table.setDefaultRenderer(ValidationRule.Severity.class, new SeverityRenderer());
         createPopupMenu();
     }
