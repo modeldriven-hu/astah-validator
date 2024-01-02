@@ -7,10 +7,10 @@ import com.change_vision.jude.api.inf.project.ProjectEvent;
 import com.change_vision.jude.api.inf.project.ProjectEventListener;
 import com.change_vision.jude.api.inf.ui.IPluginExtraTabView;
 import com.change_vision.jude.api.inf.ui.ISelectionListener;
-import hu.modeldriven.astah.validator.tool.AstahModelingTool;
-import hu.modeldriven.core.eventbus.EventBus;
 import hu.modeldriven.astah.validator.core.ModelingToolRepresentation;
+import hu.modeldriven.astah.validator.tool.AstahModelingTool;
 import hu.modeldriven.astah.validator.ui.ValidationResultPanel;
+import hu.modeldriven.core.eventbus.EventBus;
 
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
@@ -50,24 +50,27 @@ public class ValidatorView extends JPanel implements IPluginExtraTabView, Projec
 
         EventBus eventBus = new EventBus();
         ModelingToolRepresentation toolRepresentation = new AstahModelingTool();
-        ValidationResultPanel panel = new ValidationResultPanel(component, toolRepresentation, eventBus);
-        return panel;
+        return new ValidationResultPanel(component, toolRepresentation, eventBus);
     }
 
     @Override
     public void projectChanged(ProjectEvent e) {
+        // nothing to do here
     }
 
     @Override
     public void projectClosed(ProjectEvent e) {
+        // nothing to do here
     }
 
     @Override
     public void projectOpened(ProjectEvent e) {
+        // nothing to do here
     }
 
     @Override
     public void addSelectionListener(ISelectionListener listener) {
+        // nothing to do here
     }
 
     @Override
@@ -86,11 +89,11 @@ public class ValidatorView extends JPanel implements IPluginExtraTabView, Projec
     }
 
     public void activated() {
-
+        // nothing to do here
     }
 
     public void deactivated() {
-
+        // nothing to do here
     }
 }
 

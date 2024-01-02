@@ -37,7 +37,7 @@ public class AstahModelPackage implements ModelPackage {
         List<ModelElement> children = new ArrayList<>();
 
         for (INamedElement child : pkg.getOwnedElements()) {
-            if (child instanceof IPackage){
+            if (child instanceof IPackage) {
                 children.add(new AstahModelPackage((IPackage) child));
             } else {
                 children.add(new AstahModelElement(child));

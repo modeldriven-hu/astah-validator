@@ -13,13 +13,13 @@ public class DisplayValidationResultCountUseCase implements EventHandler<Validat
 
     private final JLabel validationResultLabel;
 
-    public DisplayValidationResultCountUseCase(JLabel validationResultLabel){
+    public DisplayValidationResultCountUseCase(JLabel validationResultLabel) {
         this.validationResultLabel = validationResultLabel;
     }
 
     @Override
     public void handleEvent(ValidationExecutedEvent event) {
-        if (event.validationExecution().hasViolations()){
+        if (event.validationExecution().hasViolations()) {
 
             int ruleCount = 0;
             int affectedElementsCount = 0;
@@ -27,11 +27,11 @@ public class DisplayValidationResultCountUseCase implements EventHandler<Validat
             int errorCount = 0;
             int infoCount = 0;
 
-            for (ValidationRuleViolation violation : event.validationExecution().violations()){
+            for (ValidationRuleViolation violation : event.validationExecution().violations()) {
                 ruleCount++;
                 affectedElementsCount += violation.affectedElements().size();
 
-                switch (violation.rule().severity()){
+                switch (violation.rule().severity()) {
 
                     case WARNING:
                         warningCount += violation.affectedElements().size();
@@ -49,7 +49,7 @@ public class DisplayValidationResultCountUseCase implements EventHandler<Validat
             }
 
             validationResultLabel.setText(ruleCount + " rules violated for " + affectedElementsCount + " elements ("
-            + errorCount + " error, " + warningCount + " warnings, " + infoCount + " info)");
+                    + errorCount + " error, " + warningCount + " warnings, " + infoCount + " info)");
         } else {
             validationResultLabel.setText("No violations");
         }

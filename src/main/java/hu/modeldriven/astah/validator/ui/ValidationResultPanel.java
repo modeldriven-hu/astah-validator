@@ -1,6 +1,7 @@
 package hu.modeldriven.astah.validator.ui;
 
 import hu.modeldriven.astah.validator.core.ModelingToolException;
+import hu.modeldriven.astah.validator.core.ModelingToolRepresentation;
 import hu.modeldriven.astah.validator.core.ValidationRule;
 import hu.modeldriven.astah.validator.ui.combobox.ValidationSuiteComboBoxRenderer;
 import hu.modeldriven.astah.validator.ui.event.ClearValidationRequestedEvent;
@@ -22,8 +23,8 @@ public class ValidationResultPanel extends AbstractValidationResultPanel {
 
     private final Component parentComponent;
 
-    private final hu.modeldriven.astah.validator.core.ModelingToolRepresentation modelingTool;
-    private final EventBus eventBus;
+    private final transient ModelingToolRepresentation modelingTool;
+    private final transient EventBus eventBus;
 
     public ValidationResultPanel(Component parentComponent, hu.modeldriven.astah.validator.core.ModelingToolRepresentation modelingTool, EventBus eventBus) {
         super();
@@ -82,15 +83,15 @@ public class ValidationResultPanel extends AbstractValidationResultPanel {
     }
 
     private void initUseCases() {
-        eventBus.subscribe(new hu.modeldriven.astah.validator.ui.usecase.DisplayExceptionUseCase(eventBus));
+        eventBus.subscribe(new hu.modeldriven.astah.validator.ui.usecase.DisplayExceptionUseCase());
         eventBus.subscribe(new hu.modeldriven.astah.validator.ui.usecase.DisplayRepositorySelectorUseCase(eventBus));
         eventBus.subscribe(new hu.modeldriven.astah.validator.ui.usecase.LoadYAMLRepositoryUseCase(eventBus));
-        eventBus.subscribe(new hu.modeldriven.astah.validator.ui.usecase.PopulateValidationSuitesUseCase(eventBus, suiteComboBox));
-        eventBus.subscribe(new hu.modeldriven.astah.validator.ui.usecase.EnableValidateButtonUseCase(eventBus, validateButton));
-        eventBus.subscribe(new hu.modeldriven.astah.validator.ui.usecase.EnableClearValidationButtonUseCase(eventBus, clearValidationButton));
+        eventBus.subscribe(new hu.modeldriven.astah.validator.ui.usecase.PopulateValidationSuitesUseCase(suiteComboBox));
+        eventBus.subscribe(new hu.modeldriven.astah.validator.ui.usecase.EnableValidateButtonUseCase(validateButton));
+        eventBus.subscribe(new hu.modeldriven.astah.validator.ui.usecase.EnableClearValidationButtonUseCase(clearValidationButton));
         eventBus.subscribe(new hu.modeldriven.astah.validator.ui.usecase.ExecuteValidationUseCase(eventBus));
-        eventBus.subscribe(new hu.modeldriven.astah.validator.ui.usecase.DisplayValidationExecutionUseCase(eventBus, table, cardPanel));
-        eventBus.subscribe(new ClearValidationUseCase(eventBus, cardPanel));
+        eventBus.subscribe(new hu.modeldriven.astah.validator.ui.usecase.DisplayValidationExecutionUseCase(table, cardPanel));
+        eventBus.subscribe(new ClearValidationUseCase(cardPanel));
         eventBus.subscribe(new DisplayPackageSelectorUseCase(parentComponent,
                 modelingTool,
                 eventBus));

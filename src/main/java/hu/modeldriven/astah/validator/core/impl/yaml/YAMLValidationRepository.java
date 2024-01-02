@@ -1,13 +1,12 @@
 package hu.modeldriven.astah.validator.core.impl.yaml;
 
-import hu.modeldriven.astah.validator.core.impl.script.DefaultScriptExecutorRepository;
-import hu.modeldriven.astah.validator.core.impl.script.ScriptExecutorRepository;
 import hu.modeldriven.astah.validator.core.ValidationRepository;
 import hu.modeldriven.astah.validator.core.ValidationSuite;
 import hu.modeldriven.astah.validator.core.impl.CachedValidationSuite;
+import hu.modeldriven.astah.validator.core.impl.script.DefaultScriptExecutorRepository;
+import hu.modeldriven.astah.validator.core.impl.script.ScriptExecutorRepository;
 import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Yaml;
-import org.yaml.snakeyaml.constructor.Constructor;
 
 import java.io.File;
 import java.io.FileReader;

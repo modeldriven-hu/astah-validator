@@ -1,7 +1,7 @@
 package hu.modeldriven.astah.validator.ui.event;
 
-import hu.modeldriven.core.eventbus.Event;
 import hu.modeldriven.astah.validator.core.ValidationSuite;
+import hu.modeldriven.core.eventbus.Event;
 
 public class ValidationSuiteSelectedEvent implements Event {
 

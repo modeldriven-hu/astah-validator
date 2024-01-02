@@ -7,7 +7,7 @@ public class AstahModelElement implements ModelElement {
 
     private final INamedElement element;
 
-    public AstahModelElement(INamedElement element){
+    public AstahModelElement(INamedElement element) {
         this.element = element;
     }
 

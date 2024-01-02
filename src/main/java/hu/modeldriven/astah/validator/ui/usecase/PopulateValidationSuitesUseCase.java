@@ -1,24 +1,20 @@
 package hu.modeldriven.astah.validator.ui.usecase;
 
-import hu.modeldriven.core.eventbus.Event;
-import hu.modeldriven.core.eventbus.EventBus;
-import hu.modeldriven.core.eventbus.EventHandler;
-import hu.modeldriven.core.usecase.UseCase;
 import hu.modeldriven.astah.validator.core.ValidationSuite;
 import hu.modeldriven.astah.validator.ui.event.ValidationSuitesAvailableEvent;
+import hu.modeldriven.core.eventbus.Event;
+import hu.modeldriven.core.eventbus.EventHandler;
+import hu.modeldriven.core.usecase.UseCase;
 
 import javax.swing.JComboBox;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 public class PopulateValidationSuitesUseCase implements UseCase, EventHandler<ValidationSuitesAvailableEvent> {
 
-    private final EventBus eventBus;
     private final JComboBox<ValidationSuite> comboBox;
 
-    public PopulateValidationSuitesUseCase(EventBus eventBus, JComboBox<ValidationSuite> comboBox) {
-        this.eventBus = eventBus;
+    public PopulateValidationSuitesUseCase(JComboBox<ValidationSuite> comboBox) {
         this.comboBox = comboBox;
     }
 

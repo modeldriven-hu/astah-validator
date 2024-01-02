@@ -14,12 +14,12 @@ import java.awt.image.BufferedImage;
 
 public class SeverityRenderer extends DefaultTableCellRenderer {
 
-    private final int WIDTH = 16;
-    private final int HEIGHT = 16;
+    private static final int WIDTH = 16;
+    private static final int HEIGHT = 16;
 
-    private final Icon infoIcon;
-    private final Icon warningIcon;
-    private final Icon errorIcon;
+    private final transient Icon infoIcon;
+    private final transient Icon warningIcon;
+    private final transient Icon errorIcon;
 
     public SeverityRenderer() {
         super();

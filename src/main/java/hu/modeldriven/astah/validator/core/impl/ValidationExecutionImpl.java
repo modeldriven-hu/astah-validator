@@ -22,8 +22,8 @@ public class ValidationExecutionImpl implements ValidationExecution {
 
         List<ValidationRuleViolation> violations = new ArrayList<>();
 
-        for (ValidationRule rule : failedRules.keySet()) {
-            violations.add(new ValidationRuleViolationImpl(rule, failedRules.get(rule)));
+        for (Map.Entry<ValidationRule, List<ModelElement>> entry : failedRules.entrySet()) {
+            violations.add(new ValidationRuleViolationImpl(entry.getKey(), entry.getValue()));
         }
 
         return violations;

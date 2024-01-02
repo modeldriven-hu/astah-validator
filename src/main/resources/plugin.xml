@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin>
-   <extension point="com.change_vision.astah.ui.view">
-      <view
-              id="hu.modeldriven.astah-validator.ValidatorView"
-              type="extraTab"
-              class="hu.modeldriven.astah.validator.ValidatorView" />
-   </extension>
+    <extension point="com.change_vision.astah.ui.view">
+        <view
+                id="hu.modeldriven.astah-validator.ValidatorView"
+                type="extraTab"
+                class="hu.modeldriven.astah.validator.ValidatorView"/>
+    </extension>
 </plugin>

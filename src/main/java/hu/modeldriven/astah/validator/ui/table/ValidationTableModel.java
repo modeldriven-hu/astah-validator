@@ -7,7 +7,7 @@ import javax.swing.table.AbstractTableModel;
 
 public class ValidationTableModel extends AbstractTableModel {
 
-    private final ValidationTable validationTable;
+    private final transient ValidationTable validationTable;
 
     public ValidationTableModel(ValidationTable validationTable) {
         super();
@@ -28,9 +28,9 @@ public class ValidationTableModel extends AbstractTableModel {
                 return "Rule";
             case 4:
                 return "Error";
+            default:
+                return "Unknown column";
         }
-
-        return "";
     }
 
     @Override
@@ -49,15 +49,14 @@ public class ValidationTableModel extends AbstractTableModel {
         switch (column) {
             case 0:
                 return ModelElement.class;
+            case 2:
+                return ValidationRule.Severity.class;
             case 1:
             case 3:
             case 4:
+            default:
                 return String.class;
-            case 2:
-                return ValidationRule.Severity.class;
         }
-
-        return String.class;
     }
 
     @Override
@@ -76,9 +75,9 @@ public class ValidationTableModel extends AbstractTableModel {
                 return validationTableRow.getRuleName();
             case 4:
                 return validationTableRow.getMessage();
+            default:
+                return "";
         }
-
-        return "";
     }
 
 }

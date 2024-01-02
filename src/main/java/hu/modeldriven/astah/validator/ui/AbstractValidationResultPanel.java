@@ -9,6 +9,7 @@ import hu.modeldriven.astah.validator.core.ValidationSuite;
 /**
  * @author zsolt
  */
+@SuppressWarnings("java:S1450")
 public class AbstractValidationResultPanel extends javax.swing.JPanel {
 
     /**
@@ -60,31 +61,31 @@ public class AbstractValidationResultPanel extends javax.swing.JPanel {
         javax.swing.GroupLayout actionPanelLayout = new javax.swing.GroupLayout(actionPanel);
         actionPanel.setLayout(actionPanelLayout);
         actionPanelLayout.setHorizontalGroup(
-            actionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(actionPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(selectRepositoryButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(suiteComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(selectPackageButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(validateButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(clearValidationButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                actionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(actionPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(selectRepositoryButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(suiteComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(selectPackageButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(validateButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(clearValidationButton)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         actionPanelLayout.setVerticalGroup(
-            actionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(actionPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(actionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(selectRepositoryButton)
-                    .addComponent(suiteComboBox)
-                    .addComponent(validateButton)
-                    .addComponent(clearValidationButton)
-                    .addComponent(selectPackageButton))
-                .addGap(11, 11, 11))
+                actionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(actionPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(actionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(selectRepositoryButton)
+                                        .addComponent(suiteComboBox)
+                                        .addComponent(validateButton)
+                                        .addComponent(clearValidationButton)
+                                        .addComponent(selectPackageButton))
+                                .addGap(11, 11, 11))
         );
 
         add(actionPanel, java.awt.BorderLayout.NORTH);
@@ -104,15 +105,15 @@ public class AbstractValidationResultPanel extends javax.swing.JPanel {
         tablePanel.setLayout(new java.awt.BorderLayout());
 
         table.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {},
-                {},
-                {},
-                {}
-            },
-            new String [] {
+                new Object[][]{
+                        {},
+                        {},
+                        {},
+                        {}
+                },
+                new String[]{
 
-            }
+                }
         ));
         scrollPane.setViewportView(table);
 
@@ -130,18 +131,18 @@ public class AbstractValidationResultPanel extends javax.swing.JPanel {
         javax.swing.GroupLayout validationResultInfoPanelLayout = new javax.swing.GroupLayout(validationResultInfoPanel);
         validationResultInfoPanel.setLayout(validationResultInfoPanelLayout);
         validationResultInfoPanelLayout.setHorizontalGroup(
-            validationResultInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(validationResultInfoPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(validationResultLabel)
-                .addContainerGap(777, Short.MAX_VALUE))
+                validationResultInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(validationResultInfoPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(validationResultLabel)
+                                .addContainerGap(777, Short.MAX_VALUE))
         );
         validationResultInfoPanelLayout.setVerticalGroup(
-            validationResultInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(validationResultInfoPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(validationResultLabel)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                validationResultInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(validationResultInfoPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(validationResultLabel)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         add(validationResultInfoPanel, java.awt.BorderLayout.SOUTH);

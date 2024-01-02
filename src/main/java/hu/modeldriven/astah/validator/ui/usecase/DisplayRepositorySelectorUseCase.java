@@ -1,16 +1,15 @@
 package hu.modeldriven.astah.validator.ui.usecase;
 
+import hu.modeldriven.astah.validator.ui.event.SelectRepositoryRequestedEvent;
+import hu.modeldriven.astah.validator.ui.event.YAMLRepositoryFileSelectedEvent;
 import hu.modeldriven.core.eventbus.Event;
 import hu.modeldriven.core.eventbus.EventBus;
 import hu.modeldriven.core.eventbus.EventHandler;
 import hu.modeldriven.core.usecase.UseCase;
-import hu.modeldriven.astah.validator.ui.event.SelectRepositoryRequestedEvent;
-import hu.modeldriven.astah.validator.ui.event.YAMLRepositoryFileSelectedEvent;
 
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.File;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -31,7 +30,7 @@ public class DisplayRepositorySelectorUseCase implements UseCase, EventHandler<S
     public void handleEvent(SelectRepositoryRequestedEvent selectRepositoryRequestedEvent) {
         JFileChooser chooser = new JFileChooser();
 
-        FileNameExtensionFilter filter = new FileNameExtensionFilter("YAML", new String[]{"yaml", "yml"});
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("YAML", "yaml", "yml");
         chooser.addChoosableFileFilter(filter);
         chooser.setFileFilter(filter);
 

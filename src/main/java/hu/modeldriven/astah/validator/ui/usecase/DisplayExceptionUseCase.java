@@ -1,10 +1,9 @@
 package hu.modeldriven.astah.validator.ui.usecase;
 
+import hu.modeldriven.astah.validator.ui.event.ExceptionOccurredEvent;
 import hu.modeldriven.core.eventbus.Event;
-import hu.modeldriven.core.eventbus.EventBus;
 import hu.modeldriven.core.eventbus.EventHandler;
 import hu.modeldriven.core.usecase.UseCase;
-import hu.modeldriven.astah.validator.ui.event.ExceptionOccurredEvent;
 
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -14,17 +13,10 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.io.PrintWriter;
 import java.io.StringWriter;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 public class DisplayExceptionUseCase implements UseCase, EventHandler<ExceptionOccurredEvent> {
-
-    private final EventBus eventBus;
-
-    public DisplayExceptionUseCase(EventBus eventBus) {
-        this.eventBus = eventBus;
-    }
 
     @Override
     public void handleEvent(ExceptionOccurredEvent exceptionOccurredEvent) {

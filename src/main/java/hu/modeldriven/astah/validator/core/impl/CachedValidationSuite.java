@@ -13,7 +13,7 @@ public class CachedValidationSuite implements ValidationSuite {
 
     public CachedValidationSuite(ValidationSuite delegate) {
         this.delegate = delegate;
-        this.cachedRules = new ArrayList<ValidationRule>();
+        this.cachedRules = new ArrayList<>();
     }
 
     @Override

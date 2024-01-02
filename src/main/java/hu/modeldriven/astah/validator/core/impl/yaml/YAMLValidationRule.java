@@ -1,10 +1,10 @@
 package hu.modeldriven.astah.validator.core.impl.yaml;
 
-import hu.modeldriven.astah.validator.core.impl.script.ScriptExecutor;
-import hu.modeldriven.astah.validator.core.impl.script.ScriptExecutorRepository;
 import hu.modeldriven.astah.validator.core.ModelElement;
 import hu.modeldriven.astah.validator.core.ValidationFailedException;
 import hu.modeldriven.astah.validator.core.ValidationRule;
+import hu.modeldriven.astah.validator.core.impl.script.ScriptExecutor;
+import hu.modeldriven.astah.validator.core.impl.script.ScriptExecutorRepository;
 
 import java.util.Map;
 

@@ -1,16 +1,16 @@
 package hu.modeldriven.astah.validator.ui.usecase;
 
+import hu.modeldriven.astah.validator.core.ModelPackage;
+import hu.modeldriven.astah.validator.core.RulesValidator;
+import hu.modeldriven.astah.validator.core.ValidationExecution;
+import hu.modeldriven.astah.validator.core.ValidationSuite;
+import hu.modeldriven.astah.validator.core.impl.RulesValidatorImpl;
 import hu.modeldriven.astah.validator.ui.event.PackageSelectedEvent;
 import hu.modeldriven.astah.validator.ui.event.ValidationRequestedEvent;
 import hu.modeldriven.astah.validator.ui.event.ValidationSuiteSelectedEvent;
 import hu.modeldriven.core.eventbus.Event;
 import hu.modeldriven.core.eventbus.EventBus;
 import hu.modeldriven.core.eventbus.EventHandler;
-import hu.modeldriven.astah.validator.core.ModelPackage;
-import hu.modeldriven.astah.validator.core.RulesValidator;
-import hu.modeldriven.astah.validator.core.ValidationExecution;
-import hu.modeldriven.astah.validator.core.ValidationSuite;
-import hu.modeldriven.astah.validator.core.impl.RulesValidatorImpl;
 
 import java.util.Arrays;
 import java.util.List;
@@ -29,11 +29,11 @@ public class ExecuteValidationUseCase implements EventHandler<Event> {
     public void handleEvent(Event event) {
 
         if (event instanceof PackageSelectedEvent) {
-            this.selectionData.selectedPackage = ((PackageSelectedEvent)event).selectedPackage();
+            this.selectionData.selectedPackage = ((PackageSelectedEvent) event).selectedPackage();
         }
 
         if (event instanceof ValidationSuiteSelectedEvent) {
-            this.selectionData.selectedSuite = ((ValidationSuiteSelectedEvent)event).selectedSuite();
+            this.selectionData.selectedSuite = ((ValidationSuiteSelectedEvent) event).selectedSuite();
         }
 
         if (event instanceof hu.modeldriven.astah.validator.ui.event.ValidationRequestedEvent) {

@@ -9,20 +9,20 @@ import java.util.function.Consumer;
 
 public class PackageSelectorPanel extends AbstractPackageSelectorPanel {
 
-    private final JDialog parentDialog;
-    private final IPackage rootPackage;
+    private final transient JDialog parentDialog;
+    private final transient IPackage rootPackage;
 
-    private final Consumer<IPackage> callback;
+    private final transient Consumer<IPackage> callback;
 
     public PackageSelectorPanel(JDialog parentDialog, IPackage rootPackage, Consumer<IPackage> callback) {
         super();
         this.parentDialog = parentDialog;
         this.rootPackage = rootPackage;
         this.callback = callback;
-        initComponents();
+        initParentComponents();
     }
 
-    private void initComponents() {
+    private void initParentComponents() {
 
         DefaultTreeModel treeModel = new DefaultTreeModel(
                 new PackageTreeNode(rootPackage, null));

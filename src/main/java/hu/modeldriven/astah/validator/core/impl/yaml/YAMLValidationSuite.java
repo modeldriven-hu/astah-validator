@@ -1,8 +1,8 @@
 package hu.modeldriven.astah.validator.core.impl.yaml;
 
-import hu.modeldriven.astah.validator.core.impl.script.ScriptExecutorRepository;
 import hu.modeldriven.astah.validator.core.ValidationRule;
 import hu.modeldriven.astah.validator.core.ValidationSuite;
+import hu.modeldriven.astah.validator.core.impl.script.ScriptExecutorRepository;
 
 import java.util.ArrayList;
 import java.util.List;

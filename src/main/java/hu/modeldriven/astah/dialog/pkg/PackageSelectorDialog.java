@@ -3,6 +3,7 @@ package hu.modeldriven.astah.dialog.pkg;
 import com.change_vision.jude.api.inf.model.IPackage;
 
 import javax.swing.JDialog;
+import javax.swing.WindowConstants;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.util.function.Consumer;
@@ -24,7 +25,7 @@ public class PackageSelectorDialog {
     public void show() {
         JDialog dialog = new JDialog();
         dialog.setModal(true);
-        dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+        dialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         dialog.getContentPane().setLayout(new BorderLayout());
 
         PackageSelectorPanel panel = new PackageSelectorPanel(dialog, rootPackage, callback);

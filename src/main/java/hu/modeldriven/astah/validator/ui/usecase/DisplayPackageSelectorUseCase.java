@@ -2,15 +2,15 @@ package hu.modeldriven.astah.validator.ui.usecase;
 
 import com.change_vision.jude.api.inf.model.IPackage;
 import hu.modeldriven.astah.dialog.pkg.PackageSelectorDialog;
+import hu.modeldriven.astah.validator.core.ModelingToolException;
+import hu.modeldriven.astah.validator.core.ModelingToolRepresentation;
 import hu.modeldriven.astah.validator.tool.AstahModelPackage;
+import hu.modeldriven.astah.validator.ui.event.ExceptionOccurredEvent;
 import hu.modeldriven.astah.validator.ui.event.PackageSelectedEvent;
+import hu.modeldriven.astah.validator.ui.event.SelectPackageRequestedEvent;
 import hu.modeldriven.core.eventbus.Event;
 import hu.modeldriven.core.eventbus.EventBus;
 import hu.modeldriven.core.eventbus.EventHandler;
-import hu.modeldriven.astah.validator.core.ModelingToolException;
-import hu.modeldriven.astah.validator.core.ModelingToolRepresentation;
-import hu.modeldriven.astah.validator.ui.event.ExceptionOccurredEvent;
-import hu.modeldriven.astah.validator.ui.event.SelectPackageRequestedEvent;
 
 import java.awt.Component;
 import java.util.Collections;
@@ -24,7 +24,7 @@ public class DisplayPackageSelectorUseCase implements EventHandler<SelectPackage
     private final ModelingToolRepresentation toolRepresentation;
     private final EventBus eventBus;
 
-    public DisplayPackageSelectorUseCase(Component parentComponent, ModelingToolRepresentation toolRepresentation, EventBus eventBus){
+    public DisplayPackageSelectorUseCase(Component parentComponent, ModelingToolRepresentation toolRepresentation, EventBus eventBus) {
         this.parentComponent = parentComponent;
         this.toolRepresentation = toolRepresentation;
         this.eventBus = eventBus;
@@ -47,7 +47,7 @@ public class DisplayPackageSelectorUseCase implements EventHandler<SelectPackage
                     this);
             dialog.show();
 
-        } catch (ModelingToolException e){
+        } catch (ModelingToolException e) {
             eventBus.publish(new ExceptionOccurredEvent(e));
         }
     }

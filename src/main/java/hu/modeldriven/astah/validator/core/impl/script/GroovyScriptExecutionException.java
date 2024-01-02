@@ -23,7 +23,7 @@ public class GroovyScriptExecutionException extends ScriptExecutionException {
     }
 
     private static int extractLineNumberFromCompilationError(String errorMessage) {
-        Pattern pattern = Pattern.compile("@ line ([0-9]+)");
+        Pattern pattern = Pattern.compile("@ line (\\d+)");
         Matcher matcher = pattern.matcher(errorMessage);
 
         if (matcher.find()) {
