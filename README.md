@@ -19,6 +19,7 @@ can be described in groovy script (very similar to java) which are stored in a s
 - Support for context menu
     - Jump to errornous element in the structure tree
     - Jump to errornous element on current diagram
+- Sorting in table
 
 # Repository format
 
